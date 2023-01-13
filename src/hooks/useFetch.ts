@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react'
 
-type Fetch = {
-  response: null
+type Fetch<T> = {
+  response: T | null
   error: Error | null
   loading: boolean
 }
 
-const useFetch = (url: string): Fetch => {
+const useFetch = <T extends object>(url: string): Fetch<T> => {
   const [response, setResponse] = useState(null)
   const [error, setError] = useState<null | Error>(null)
   const [loading, setLoading] = useState(false)
