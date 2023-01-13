@@ -1,12 +1,20 @@
 import { Dialog, DialogContent, DialogTitle, Typography } from '@mui/material'
 import { useDispatch, useSelector } from 'react-redux'
 import { productDetailsSliceActions } from '../../store/productDetailsSlice'
+import { Data } from '../table/Table.types'
+
+type Store = {
+  productDetails: {
+    isOpen: boolean
+    productDetails: Data
+  }
+}
 
 const ProductDetails = (): JSX.Element => {
   const {
     productDetails: { name, year, color, id, pantone_value },
     isOpen,
-  } = useSelector((state: any) => state.productDetails)
+  } = useSelector((state: Store) => state.productDetails)
   const dispatch = useDispatch()
 
   const handleClose = () => {
