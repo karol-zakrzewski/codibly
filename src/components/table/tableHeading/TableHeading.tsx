@@ -8,7 +8,9 @@ const TableHeading = ({ headings }: Props): JSX.Element => {
   return (
     <TableRow>
       {headings.map((heading, index) => (
-        <TableCell key={`${index}-${heading}`}>{heading}</TableCell>
+        <TableCell align="center" key={`${index}-${heading}`}>
+          {heading}
+        </TableCell>
       ))}
     </TableRow>
   )

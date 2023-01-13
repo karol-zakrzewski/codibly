@@ -18,7 +18,6 @@ const Form = (): JSX.Element => {
     },
   })
   const onSubmit: SubmitHandler<Inputs> = (data) => {
-    console.log(data)
     navigate(`/${data.value}`)
     reset()
   }
@@ -27,7 +26,12 @@ const Form = (): JSX.Element => {
     <Box
       component="form"
       sx={{
-        '& > :not(style)': { m: 1, width: '25ch' },
+        m: 1,
+        width: '100%',
+        display: 'flex',
+        justifyContent: 'center',
+        alignItems: 'center',
+        gap: '2rem',
       }}
       noValidate
       autoComplete="off"

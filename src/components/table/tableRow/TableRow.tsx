@@ -3,23 +3,18 @@ import { Data } from '../Table.types'
 
 type Props = Data
 
-const TableRow = ({
-  id,
-  name,
-  color,
-  year,
-  pantone_value,
-}: Props): JSX.Element => {
+const TableRow = ({ id, name, color, year }: Props): JSX.Element => {
   return (
     <MUITableRow
       key={name}
-      sx={{ '&:last-child td, &:last-child th': { border: 0 } }}
+      sx={{
+        '&:last-child td, &:last-child th': { border: 0 },
+        background: color,
+      }}
     >
-      <TableCell align="right">{id}</TableCell>
-      <TableCell align="right">{name}</TableCell>
-      <TableCell align="right">{color}</TableCell>
-      <TableCell align="right">{year}</TableCell>
-      <TableCell align="right">{pantone_value}</TableCell>
+      <TableCell align="center">{id}</TableCell>
+      <TableCell align="center">{name}</TableCell>
+      <TableCell align="center">{year}</TableCell>
     </MUITableRow>
   )
 }

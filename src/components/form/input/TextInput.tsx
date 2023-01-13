@@ -25,6 +25,7 @@ const TextInput = ({ control, errors, name }: Props): JSX.Element => {
           helperText={errors && errors[name]?.message}
           label="Search product"
           variant="outlined"
+          type="number"
           {...field}
         />
       )}

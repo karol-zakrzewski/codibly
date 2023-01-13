@@ -1,6 +1,6 @@
 import './App.css'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
-import Home from './pages/Home'
+import Home from './pages/home/Home'
 import FilteredProductTable from './pages/FilteredProductTable'
 import Form from './components/form/Form'
 import NotFound from './components/notFound/NotFound'

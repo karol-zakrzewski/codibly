@@ -12,12 +12,12 @@ type Props = {
 }
 
 const Table = ({ children }: Props): JSX.Element => {
-  const headings = ['Id', 'Name', 'Color', 'Year', 'Pantone Value']
+  const headings = ['Id', 'Name', 'Year']
 
   return (
-    <Paper sx={{ width: '100%', overflow: 'hidden' }}>
+    <Paper sx={{ maxWidth: 650, overflow: 'hidden', margin: '2rem auto 0' }}>
       <TableContainer component={Paper}>
-        <MUITable sx={{ minWidth: 650 }} aria-label="Products table">
+        <MUITable aria-label="Products table">
           <TableHead>
             <TableHeading headings={headings} />
           </TableHead>
