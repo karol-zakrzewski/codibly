@@ -1,7 +1,9 @@
 import './App.css'
-import Form from './components/form/Form'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import Home from './pages/Home'
+import FilteredProductTable from './pages/FilteredProductTable'
+import Form from './components/form/Form'
+import NotFound from './components/notFound/NotFound'
 
 function App(): JSX.Element {
   return (
@@ -10,6 +12,8 @@ function App(): JSX.Element {
         <Form />
         <Routes>
           <Route path="/" element={<Home />} />
+          <Route path=":id" element={<FilteredProductTable />} />
+          <Route path="*" element={<NotFound />} />
         </Routes>
       </div>
     </BrowserRouter>

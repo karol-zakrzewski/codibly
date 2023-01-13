@@ -5,20 +5,13 @@ import {
   TableBody,
   Table as MUITable,
 } from '@mui/material'
-import { Link } from 'react-router-dom'
-import { Data } from './Table.types'
 import TableHeading from './tableHeading/TableHeading'
-import TableRow from './tableRow/TableRow'
 
 type Props = {
-  products: Data[]
-  page: {
-    currentPage: number
-    totalPages: number
-  }
+  children: JSX.Element
 }
 
-const Table = ({ products, page }: Props): JSX.Element => {
+const Table = ({ children }: Props): JSX.Element => {
   const headings = ['Id', 'Name', 'Color', 'Year', 'Pantone Value']
 
   return (
@@ -28,15 +21,9 @@ const Table = ({ products, page }: Props): JSX.Element => {
           <TableHead>
             <TableHeading headings={headings} />
           </TableHead>
-          <TableBody>
-            {products.map((row) => (
-              <TableRow key={row.id} {...row} />
-            ))}
-          </TableBody>
+          <TableBody>{children}</TableBody>
         </MUITable>
       </TableContainer>
-      <Link to={{ search: `page=${page.currentPage - 1}` }}>Prev page</Link>
-      <Link to={{ search: `page=${page.currentPage + 1}` }}>Next page</Link>
     </Paper>
   )
 }

@@ -23,7 +23,7 @@ const TextInput = ({ control, errors, name }: Props): JSX.Element => {
         <TextField
           error={Boolean(errors[name])}
           helperText={errors && errors[name]?.message}
-          label="Filter products"
+          label="Search product"
           variant="outlined"
           {...field}
         />

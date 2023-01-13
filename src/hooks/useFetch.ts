@@ -14,9 +14,15 @@ const useFetch = <T extends object>(url: string): Fetch<T> => {
     const abortController = new AbortController()
     const signal = abortController.signal
     const doFetch = async () => {
+      setError(null)
+      setResponse(null)
       setLoading(true)
       try {
         const res = await fetch(url)
+        if (!res.ok) {
+          throw Error('Fetch failed')
+        }
+
         const json = await res.json()
         if (!signal.aborted) {
           setResponse(json)
@@ -26,8 +32,8 @@ const useFetch = <T extends object>(url: string): Fetch<T> => {
           if (!signal.aborted) {
             setError(e)
           }
-          setError(new Error('Fetch failed'))
         }
+        setError(new Error('Fetch failed'))
       } finally {
         if (!signal.aborted) {
           setLoading(false)
