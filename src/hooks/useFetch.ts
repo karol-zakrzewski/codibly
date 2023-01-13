@@ -38,7 +38,7 @@ const useFetch = <T extends object>(url: string): Fetch<T> => {
     return () => {
       abortController.abort()
     }
-  }, [])
+  }, [url])
   return { response, error, loading }
 }
 export default useFetch

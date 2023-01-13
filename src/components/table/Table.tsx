@@ -12,9 +12,13 @@ import TableRow from './tableRow/TableRow'
 
 type Props = {
   products: Data[]
+  page: {
+    currentPage: number
+    totalPages: number
+  }
 }
 
-const Table = ({ products }: Props): JSX.Element => {
+const Table = ({ products, page }: Props): JSX.Element => {
   const headings = ['Id', 'Name', 'Color', 'Year', 'Pantone Value']
 
   return (
@@ -31,7 +35,8 @@ const Table = ({ products }: Props): JSX.Element => {
           </TableBody>
         </MUITable>
       </TableContainer>
-      <Link to={{ search: 'page=2' }}>Page 2</Link>
+      <Link to={{ search: `page=${page.currentPage - 1}` }}>Prev page</Link>
+      <Link to={{ search: `page=${page.currentPage + 1}` }}>Next page</Link>
     </Paper>
   )
 }
