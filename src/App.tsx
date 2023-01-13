@@ -4,19 +4,21 @@ import Home from './pages/home/Home'
 import FilteredProductTable from './pages/FilteredProductTable'
 import Form from './components/form/Form'
 import NotFound from './components/notFound/NotFound'
+import ProductDetails from './components/modal/ProductDetails'
 
 function App(): JSX.Element {
   return (
-    <BrowserRouter>
-      <div className="App">
+    <div className="App">
+      <BrowserRouter>
         <Form />
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path=":id" element={<FilteredProductTable />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
-      </div>
-    </BrowserRouter>
+      </BrowserRouter>
+      <ProductDetails />
+    </div>
   )
 }
 
