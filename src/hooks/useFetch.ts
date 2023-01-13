@@ -19,8 +19,13 @@ const useFetch = <T extends object>(url: string): Fetch<T> => {
       setLoading(true)
       try {
         const res = await fetch(url)
-        if (!res.ok) {
-          throw Error('Fetch failed')
+
+        if (res.status === 404) {
+          throw new Error(`Not found product`)
+        } else if (res.status === 500) {
+          throw new Error(`Server error. Try again later`)
+        } else if (!res.ok) {
+          throw new Error(`Failed fetch`)
         }
 
         const json = await res.json()
@@ -29,11 +34,10 @@ const useFetch = <T extends object>(url: string): Fetch<T> => {
         }
       } catch (e) {
         if (e instanceof Error) {
-          if (!signal.aborted) {
-            setError(e)
-          }
+          setError(e)
+          return
         }
-        setError(new Error('Fetch failed'))
+        setError(new Error('Failed fetch'))
       } finally {
         if (!signal.aborted) {
           setLoading(false)

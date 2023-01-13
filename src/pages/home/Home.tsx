@@ -4,7 +4,7 @@ import useFetch from '../../hooks/useFetch'
 import { useSearchParams } from 'react-router-dom'
 import TableRow from '../../components/table/tableRow/TableRow'
 import { paths } from '../../utils/paths'
-import NotFound from '../../components/notFound/NotFound'
+import Error from '../../components/error/Error'
 import { CircularProgress } from '@mui/material'
 import TableNavigation from '../../components/table/tableNavigation/TableNavigation'
 
@@ -18,7 +18,7 @@ const Home = (): JSX.Element => {
   return (
     <>
       {loading && <CircularProgress />}
-      {error && <NotFound />}
+      {error && <Error error={error.message} />}
       {response && (
         <>
           <Table>

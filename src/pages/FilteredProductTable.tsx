@@ -1,6 +1,6 @@
 import { CircularProgress } from '@mui/material'
 import { useParams } from 'react-router-dom'
-import NotFound from '../components/notFound/NotFound'
+import Error from '../components/error/Error'
 import Table from '../components/table/Table'
 import { Data } from '../components/table/Table.types'
 import TableRow from '../components/table/tableRow/TableRow'
@@ -19,7 +19,7 @@ const FilteredProductTable = (): JSX.Element => {
   return (
     <div>
       {loading && <CircularProgress />}
-      {error && <NotFound />}
+      {error && <Error error={error.message} />}
       {response && (
         <Table>
           <>
